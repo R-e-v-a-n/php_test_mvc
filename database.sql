@@ -20,6 +20,20 @@ CREATE TABLE IF NOT EXISTS users(
 )
 ENGINE = InnoDB;
 
+CREATE TABLE `tb_tasks` (
+  `id`            INT           NOT NULL,
+  `username`      VARCHAR(50)   NOT NULL,
+  `e-mail`        VARCHAR(255)  NOT NULL,
+  `description`   VARCHAR(2000) NOT NULL,
+  `img`           VARCHAR(50)   NOT NULL,
+  `status`        INT           NOT NULL DEFAULT '0'
+)
+ENGINE = InnoDB;
+
+CREATE VIEW users_view AS
+  SELECT users.id, users.username, users.password, roles.name as role
+   FROM users, roles
+   WHERE users.role_id = roles.id;
 
 -- insert data
 INSERT INTO roles (id, name) VALUES (1, 'ROLE_USER');

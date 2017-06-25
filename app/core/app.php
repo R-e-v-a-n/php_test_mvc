@@ -2,6 +2,7 @@
 
 namespace test_mvc\core;
 
+use test_mvc\classes\DB;
 
 class App
 {
@@ -12,9 +13,15 @@ class App
             $username = $_SESSION["username"];
             $password = $_SESSION["password"];
 
-            if($username == "admin" and $password == "123")
+            $template = '/^[a-z][a-z\d]*(_[a-z\d]+)?$/i';
+            if(preg_match($template, $username))
             {
-                return "access granted";
+                $result = DB::query("SELECT * FROM users_view WHERE `username`='$username' AND `password`=MD5('$password')");
+
+                if(!empty($result))
+                {
+                    return $result[0];
+                }
             }
         }
 

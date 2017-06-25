@@ -20,6 +20,6 @@
     <?php endif; ?>
 </div>
 <div class="form-task row">
-    <textarea class="form-control" readonly="true"><?php echo $task['description']; ?></textarea>
+    <textarea class="form-control" readonly="readonly"><?php echo $task['description']; ?></textarea>
 </div>
 <hr color="red">

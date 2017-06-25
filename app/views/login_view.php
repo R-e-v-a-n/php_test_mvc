@@ -4,8 +4,8 @@
 
     <form method="POST" action="/login" class="form form-signin">
 
-        <div class="form-group <?php echo $data["login_status"] == "access_denied" ? 'has-error' : ''; ?>">
-            <span><?php echo $data["login_status"] == "access_denied" ? 'Логин и/или пароль введены неверно.' : ''; ?></span>
+        <div class="form-group <?php echo $data["login-error"] == "access_denied" ? 'has-error' : ''; ?>">
+            <span><?php echo $data["login-error"] == "access_denied" ? 'Логин и/или пароль введены неверно.' : ''; ?></span>
             <input name="username" type="text" class="form-control" placeholder="Username"
                    autofocus="true"/>
             <input name="password" type="password" class="form-control" placeholder="Password"/>

@@ -24,16 +24,16 @@
                     </div>
                     <div class="col-xs-9">
                         <?php if(!isset($_SESSION["user_role"])) : ?>
+
                         <div class="header-form">
                             <form class="form-inline" action="/login" method="post">
-                                <div class="form-group">
+                                <div class="form-group <?php echo !empty($data["login-error"]) ? "has-error" : ""; ?>">
                                     <input type="username" class="form-control" name="username" placeholder="Username">
-                                </div>
-                                <div class="form-group">
                                     <input type="password" class="form-control" name="password" placeholder="Password">
+                                    <button type="submit" class="btn btn-primary">Sign in</button>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
                             </form>
+
                         </div>
                         <?php endif; ?>
                     </div>

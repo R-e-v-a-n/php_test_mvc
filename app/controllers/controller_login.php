@@ -4,6 +4,7 @@ namespace test_mvc\controllers;
 
 use test_mvc\core\App;
 use test_mvc\core\AppController;
+use test_mvc\classes\DB;
 
     class Controller_Login extends AppController
     {
@@ -14,29 +15,26 @@ use test_mvc\core\AppController;
                 isset($_POST['password']) and
                 preg_match("/^http:\/\/".$_SERVER['HTTP_HOST']."/i",$_SERVER['HTTP_REFERER']))
             {
-                $username = $_POST['username'];
-                $password = $_POST['password'];
 
-                if(($username=="admin") and ($password=="123"))
+                $_SESSION['username'] = trim($_POST['username'], ENT_QUOTES);
+                $_SESSION['password'] = trim(htmlspecialchars($_POST['password'], ENT_QUOTES));
+
+                $user = App::check_login();
+                if($user != null)
                 {
-                    $data["login_status"] = "access_granted";
-
-                    $_SESSION['username'] = $username;
-                    $_SESSION['password'] = $password;
-                    $_SESSION['user_role'] = "ROLE_ADMIN";
+                    $_SESSION['user_role'] = $user["role"];
                     header('Location:/Admin/');
+                    return;
                 }
-                else
-                {
-                    $data["login_status"] = "access_denied";
-                }
+
+                $data["login-error"] = "access_denied";
             }
             else
             {
-                $data["login_status"] = "";
+                $data["login-error"] = "";
             }
 
-            $this->view->generate('login_view.php', 'template_view.php', $data); //
+            $this->view->generate('main_view.php', 'template_view.php', $data); //
         }
 
         public function action_logout()

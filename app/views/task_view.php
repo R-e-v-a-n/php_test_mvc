@@ -16,33 +16,24 @@
         ?>
         Предварительный просмотр: <a href="#" onclick="$('#preview').show();">Показать</a> | 
         <a href="#" onclick="$('#preview').hide();">Скрыть</a>
-        <div align="center" id="preview" style="display: none">
-            <table width="100%" id="preview_table" class="task_table">
-                <tr>
-                    <td rowspan="3" width="320" height="240">
-                        <div id="preview_image"></div>
-                    </td>
-                    <td>
-                        Автор: <span id="preview_username"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        E-Mail: <span id="preview_e-mail"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Статус: Не выполнено
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <span id="preview_description"></span>
-                    </td>
-                </tr>
-            </table>
-            <br>
+        <div id="preview" style="display: none;">
+            <hr color="red">
+            <div class="form-task row">
+                <img id="preview_image" style="float: left;">
+                <div class="col-xs-offset-6">
+                    <div class="form-control">Автор: <span id="preview_username"></span></div>
+                </div>
+                <div class="col-xs-offset-6">
+                    <div class="form-control">E-Mail: <span id="preview_e-mail"></span></div>
+                </div>
+                <div class="col-xs-offset-6">
+                    <div class="form-control">Статус: Не выполнено</div>
+                </div>
+            </div>
+            <div class="form-task row">
+                <textarea class="form-control" readonly="readonly" id="preview_description"></textarea>
+            </div>
+            <hr color="red">
         </div>
         <?php
     }
@@ -116,14 +107,7 @@
     {
         ?>
         <script>
-            function fill_preview(){
-                var form = document.getElementById("task_form");
-                document.getElementById("preview_username").innerText       = form.elements["username"].value;
-                document.getElementById("preview_e-mail").innerText         = form.elements["e-mail"].value;
-                document.getElementById("preview_description").innerText    = form.elements["description"].value;
-            }
-
-            function handleFileSelect(evt) {
+                function handleFileSelect(evt) {
                 var file = evt.target.files;
                 var f = file[0];
 
@@ -134,17 +118,24 @@
 
                 reader.onload = (function(theFile) {
                     return function(e) {
-                        var span = document.createElement('span');
-                        span.innerHTML = ['<img src="', e.target.result, '" />'].join('');
-                        document.getElementById('preview_image').innerHTML = span.outerHTML;
-                        //document.getElementById('preview_image').insertBefore(span, null);
+                        document.getElementById('preview_image').src = e.target.result;
                     };
                 })(f);
 
                 reader.readAsDataURL(f);
             }
-            setInterval("fill_preview();",100);
+
             document.getElementById('file').addEventListener('change', handleFileSelect, false);
+            document.forms["task_form"].elements["username"].addEventListener('change', function (){
+                document.getElementById("preview_username").innerText = this.value;
+            });
+            document.forms["task_form"].elements["e-mail"].addEventListener('change', function (){
+                document.getElementById("preview_e-mail").innerText = this.value;
+            });
+            document.forms["task_form"].elements["description"].addEventListener('change', function (){
+                document.getElementById("preview_description").innerText = this.value;
+            });
+
         </script>
         <?php
     }
