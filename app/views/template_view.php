@@ -30,10 +30,9 @@
                                 <div class="form-group <?php echo !empty($data["login-error"]) ? "has-error" : ""; ?>">
                                     <input type="username" class="form-control" name="username" placeholder="Username">
                                     <input type="password" class="form-control" name="password" placeholder="Password">
-                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                    <button type="submit" class="btn btn-primary form-control">Sign in</button>
                                 </div>
                             </form>
-
                         </div>
                         <?php endif; ?>
                     </div>

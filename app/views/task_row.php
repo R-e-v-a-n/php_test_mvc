@@ -19,7 +19,5 @@
     </div>
     <?php endif; ?>
 </div>
-<div class="form-task row">
-    <textarea class="form-control" readonly="readonly"><?php echo $task['description']; ?></textarea>
-</div>
+<div class="form-task well"><?php echo $task['description']; ?></div>
 <hr color="red">

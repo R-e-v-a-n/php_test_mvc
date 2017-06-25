@@ -30,9 +30,7 @@
                     <div class="form-control">Статус: Не выполнено</div>
                 </div>
             </div>
-            <div class="form-task row">
-                <textarea class="form-control" readonly="readonly" id="preview_description"></textarea>
-            </div>
+            <div class="form-task well" id="preview_description"></div>
             <hr color="red">
         </div>
         <?php
