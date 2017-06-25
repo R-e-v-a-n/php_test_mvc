@@ -20,13 +20,15 @@ CREATE TABLE IF NOT EXISTS users(
 )
 ENGINE = InnoDB;
 
-CREATE TABLE `tb_tasks` (
-  `id`            INT           NOT NULL,
+CREATE TABLE IF NOT EXISTS `tb_tasks` (
+  `id`            INT           NOT NULL AUTO_INCREMENT,
   `username`      VARCHAR(50)   NOT NULL,
   `e-mail`        VARCHAR(255)  NOT NULL,
   `description`   VARCHAR(2000) NOT NULL,
   `img`           VARCHAR(50)   NOT NULL,
-  `status`        INT           NOT NULL DEFAULT '0'
+  `status`        INT           NOT NULL DEFAULT '0',
+
+  PRIMARY KEY (id)
 )
 ENGINE = InnoDB;
 
