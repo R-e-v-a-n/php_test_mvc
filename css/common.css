@@ -1,0 +1,61 @@
+.form-task{
+    max-width: 700px;
+    text-align: left;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form .form-heading,
+.form .checkbox {
+    margin-bottom: 10px;
+}
+
+.form .checkbox {
+    font-weight: normal;
+}
+
+.form .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+
+    float: none;
+
+    -webkit-touch-callout: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.form .form-control:focus {
+    z-index: 2;
+}
+
+.form input {
+    margin-top: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form button {
+    margin-top: 10px;
+}
+
+textarea.form-control {
+    margin-top: 10px;
+    resize: vertical;
+}
+
+.has-error {
+    color: red
+}
